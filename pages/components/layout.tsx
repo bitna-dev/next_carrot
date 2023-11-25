@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { Span } from "next/dist/trace";
 import Head from "next/head";
 import cls from "../libs/utils";
 import Link from "next/link";
@@ -22,7 +21,7 @@ const Layout: NextPage<LayoutProps> = ({
     router.back();
   };
   return (
-    <div>
+    <div className="">
       <Head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
@@ -37,7 +36,15 @@ const Layout: NextPage<LayoutProps> = ({
       <div className={cls("pt-16", hasTabBar ? "pb-24" : "")}>{children}</div>
       {hasTabBar ? (
         <nav className="bg-white w-full max-w-lg text-gray-800 border-t fixed bottom-0 pb-5 pt-3 flex justify-between items-center text-sm px-10">
-          <Link href="/" className="flex flex-col items-center space-y-2">
+          <Link
+            href="/"
+            className={cls(
+              "flex flex-col items-center space-y-2",
+              router.pathname === "/"
+                ? "text-orange-500"
+                : "hover:text-gray-500 transition-colors"
+            )}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -57,7 +64,12 @@ const Layout: NextPage<LayoutProps> = ({
           </Link>
           <Link
             href="/community"
-            className="flex flex-col items-center space-y-2"
+            className={cls(
+              "flex flex-col items-center space-y-2",
+              router.pathname === "/community"
+                ? "text-orange-500"
+                : "hover:text-gray-500 transition-colors"
+            )}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +88,15 @@ const Layout: NextPage<LayoutProps> = ({
 
             <span>동네생활</span>
           </Link>
-          <Link href="/chats" className="flex flex-col items-center space-y-2">
+          <Link
+            href="/chats"
+            className={cls(
+              "flex flex-col items-center space-y-2",
+              router.pathname === "/chats"
+                ? "text-orange-500"
+                : "hover:text-gray-500 transition-colors"
+            )}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -94,7 +114,15 @@ const Layout: NextPage<LayoutProps> = ({
 
             <span>메세지</span>
           </Link>
-          <Link href="streams" className="flex flex-col items-center space-y-2">
+          <Link
+            href="/streams"
+            className={cls(
+              "flex flex-col items-center space-y-2",
+              router.pathname === "/streams"
+                ? "text-orange-500"
+                : "hover:text-gray-500 transition-colors"
+            )}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -113,7 +141,12 @@ const Layout: NextPage<LayoutProps> = ({
           </Link>
           <Link
             href="/profile"
-            className="flex flex-col items-center space-y-2"
+            className={cls(
+              "flex flex-col items-center space-y-2",
+              router.pathname === "/profile"
+                ? "text-orange-500"
+                : "hover:text-gray-500 transition-colors"
+            )}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -1,9 +1,11 @@
 import type { NextPage } from "next";
 import Layout from "../components/layout";
+import Input from "../components/input";
+import Button from "../components/button";
 
 const EditProfile: NextPage = () => {
   return (
-    <Layout title="프로필편집" hasTabBar>
+    <Layout title="Edit Profile" hasTabBar canGoback>
       <div className="px-4 space-y-4">
         <div className="flex items-center space-x-3">
           <div className="w-14 h-14 rounded-full bg-slate-500" />
@@ -20,36 +22,15 @@ const EditProfile: NextPage = () => {
             />
           </label>
         </div>
-        <div className="space-y-1">
-          <label htmlFor="email" className="text-sm font-medium text-gray-700">
-            Email address
-          </label>
-          <input
-            id="email"
-            type="email"
-            className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
-            required
-          />
-        </div>
-        <div className="space-y-1">
-          <label htmlFor="phone" className="text-sm font-medium text-gray-700">
-            Phone number
-          </label>
-          <div className="flex rounded-md shadow-sm">
-            <span className="flex items-center justify-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 select-none text-sm">
-              +82
-            </span>
-            <input
-              id="input"
-              type="number"
-              className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md rounded-l-none shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
-              required
-            />
-          </div>
-        </div>
-        <button className="mt-5 w-full bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 focus:outline-none ">
-          Update profile
-        </button>
+        <Input required label="Email Address" name="email" type="email" />
+        <Input
+          required
+          label="Phone Number"
+          name="phone"
+          type="tel"
+          kind="phone"
+        />
+        <Button text="Update Profile" />
       </div>
     </Layout>
   );
